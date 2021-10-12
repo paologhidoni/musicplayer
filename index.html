@@ -11,30 +11,40 @@
 
   <h1>My Music Player</h1>
 
-  <div class='music-container'>
+  <div class='music-container play'>
+
     <div class='music-info'>
+
+      <h2 id='artist'>Artist</h2>
       <h2 id='title'>MySong</h2>
+      <h3 id='songLength'></h3>
+
       <div class='progress-container'>
         <div class='progress'></div>
       </div>
+
     </div>
 
     <audio src='assets/audio/ceremony.mp3' id='audio'></audio>
 
     <div class="cover-container">
-      <img src="assets/img/ceremony.jpg" alt="song cover" id="cover">
+      <img src="" alt="song cover" id="cover">
     </div>
 
     <div class="navigation">
-      <button id='backward-btn' class="action-btn">
-        <img src="assets/img/backward.png" alt="back button" class='img-button'>
+
+      <button id='previous-btn' class="action-btn">
+        <img src="assets/img/backward.png" alt="previous button" class='img-button'>
       </button>
+
       <button id='play-btn' class="action-btn">
         <img src="assets/img/play.png" alt="play button" class='img-button'>
       </button>
-      <button id='forward-btn' class="action-btn">
-        <img src="assets/img/forward.png" alt="forward button" class='img-button'>
+
+      <button id='next-btn' class="action-btn">
+        <img src="assets/img/forward.png" alt="next button" class='img-button'>
       </button>
+
     </div>
 
   </div>
