@@ -33,7 +33,7 @@ h1 {
   box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.6);
   padding: 3rem 10rem;
   position: relative;
-  z-index: 999;
+  z-index: 10;
 }
 
 .cover-container {
@@ -70,6 +70,7 @@ h1 {
 .navigation {
   display: flex;
   align-items: center;
+  z-index: 1;
 }
 
 .music-info {
@@ -84,12 +85,13 @@ h1 {
   color: #fff;
   padding: 1rem 1rem 1rem 5rem;
   opacity: 0;
-  transition: transform 0.5s ease-in;
+  transition: transform 0.4s ease-in, opacity 0.3s ease-in;
+  z-index: 0;
 }
 
 .music-container.play .music-info {
   opacity: 1;
-  transform: translate(-50%, -100%);
+  transform: translate(-50%, -98%);
 }
 
 #artist, #title, #songLength {
