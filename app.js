@@ -15,7 +15,7 @@ const progressContainer = document.querySelector('.progress-container');
 const playlist = {
   0: {
     songName: 'Ceremony',
-    artist : 'New order',
+    artist : 'New Order',
     length: '4:50',
     source: 'ceremony.mp3',
     cover: 'ceremony.jpg'
@@ -85,6 +85,13 @@ function nextSong() {
   playSong();
 }
 
+// Function to update the progress bar
+function updateProgress(e) {
+  const {duration, currentTime} = e.srcElement;
+  const progressPercent = (currentTime / duration) * 100;
+  progress.style.width = `${progressPercent}%`;
+}
+
 // Add event listener to play button
 playBtn.addEventListener('click', function () {
   console.log(Object.keys(playlist).length);
@@ -105,3 +112,5 @@ prevBtn.addEventListener('click', function() {
 nextBtn.addEventListener('click', function() {
   nextSong();
 });
+
+audioElement.addEventListener('timeupdate', updateProgress);
