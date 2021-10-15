@@ -4,10 +4,11 @@ const playBtn = document.querySelector('#play-btn');
 const prevBtn = document.querySelector('#previous-btn');
 const nextBtn = document.querySelector('#next-btn');
 const audioElement = document.querySelector('#audio');
-const songLength = document.querySelector('#songLength');
+const songLength = document.querySelector('#songLength'); // Find a way to display time elapsed
 const artist = document.querySelector('#artist');
 const title = document.querySelector('#title');
 const cover = document.querySelector('#cover');
+const songURL = document.querySelector('.soundcloudLogo');
 const progress = document.querySelector('.progress');
 const progressContainer = document.querySelector('.progress-container');
 
@@ -16,29 +17,31 @@ const playlist = {
   0: {
     songName: 'Ceremony',
     artist : 'New Order',
-    length: '4:50',
     source: 'ceremony.mp3',
-    cover: 'ceremony.jpg'
+    cover: 'ceremony.jpg',
+    songURL: 'https://soundcloud.com/sounds-like-paolo/ceremony-new-order-cover'
   },
   1: {
     songName: 'Ever',
     artist : 'Team Sleep',
-    length: '3:45',
     source: 'ever.mp3',
-    cover: 'ever.jpg'
+    cover: 'ever.jpg',
+    songURL: 'https://soundcloud.com/sounds-like-paolo/ever-team-sleep-cover'
   }
 }
 
 // Current Song
 let currentSong = 1;
 
+
 // Function to load song and update song details
 function loadSong(playlist, currentSong) {
   artist.innerText = `${playlist[currentSong].artist}`;
   title.textContent = `${playlist[currentSong].songName}`;
-  songLength.innerText = `${playlist[currentSong].length}`;
+  // add time elapsed
   audioElement.src = `assets/audio/${playlist[currentSong].source}`;
   cover.src = `assets/img/${playlist[currentSong].cover}`;
+  songURL.href = `${playlist[currentSong].songURL}`;
 }
 
 // Run Load song
