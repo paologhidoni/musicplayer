@@ -4,7 +4,7 @@ const playBtn = document.querySelector('#play-btn');
 const prevBtn = document.querySelector('#previous-btn');
 const nextBtn = document.querySelector('#next-btn');
 const audioElement = document.querySelector('#audio');
-const songLength = document.querySelector('#songLength'); // Find a way to display time elapsed
+const trackCountdown = document.querySelector('.track__countdown'); 
 const artist = document.querySelector('#artist');
 const title = document.querySelector('#title');
 const cover = document.querySelector('#cover');
@@ -34,11 +34,14 @@ const playlist = {
 let currentSong = 1;
 
 
+
+// FUNCTIONS //
+
+
 // Function to load song and update song details
 function loadSong(playlist, currentSong) {
   artist.innerText = `${playlist[currentSong].artist}`;
   title.textContent = `${playlist[currentSong].songName}`;
-  // add time elapsed
   audioElement.src = `assets/audio/${playlist[currentSong].source}`;
   cover.src = `assets/img/${playlist[currentSong].cover}`;
   songURL.href = `${playlist[currentSong].songURL}`;
@@ -88,12 +91,26 @@ function nextSong() {
   playSong();
 }
 
-// Function to update the progress bar
+// Function to display countdown timer and update the progress bar.
 function updateProgress(e) {
-  const {duration, currentTime} = e.srcElement;
-  const progressPercent = (currentTime / duration) * 100;
-  progress.style.width = `${progressPercent}%`;
+  const {duration, currentTime} = e.srcElement; // Store in variables total length of 
+                                                // track in seconds and time elapsed in seconds.  
+  const progressPercent = (currentTime / duration) * 100; // Find percentage of progress in the track.
+  progress.style.width = `${progressPercent}%`; // Apply percentage as width style to progress bar.
+
+
+  const minutes = Math.floor(audioElement.currentTime / 60); // Find elapsed minutes.
+  const displayMinutes = minutes < 10 ? '0' + minutes : minutes; // Pad to 2 digits.
+
+  const seconds = Math.floor(audioElement.currentTime - minutes * 60); // Find elapsed seconds.
+  const displaySeconds = seconds < 10 ? '0' + seconds : seconds; // Pad to 2 digits.
+  trackCountdown.innerText = `${displayMinutes}:${displaySeconds}`; // display minutes and seconds.
 }
+
+
+
+
+// EVENT LISTENERS //
 
 // Add event listener to play button
 playBtn.addEventListener('click', function () {
