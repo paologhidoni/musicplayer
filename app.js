@@ -107,14 +107,23 @@ function updateProgress(e) {
   trackCountdown.innerText = `${displayMinutes}:${displaySeconds}`; // display minutes and seconds.
 }
 
+// function to make the progress bar clickable.
+
+function setProgress(e) {
+  const width = this.clientWidth; // Finds total width of progress bar
+  const clickX = e.offsetX; // Finds width at clicked point
+  const duration = audioElement.duration; // get the song duration
+  
+  audioElement.currentTime = (clickX / width) * duration; // set the audio current time to equal the width at the point where I have clicked / the total width * the song duraton.
+}
+
 
 
 
 // EVENT LISTENERS //
 
-// Add event listener to play button
+// Add event listener to play button to either play or pause the song
 playBtn.addEventListener('click', function () {
-  console.log(Object.keys(playlist).length);
   const isPlaying = musicContainer.classList.contains('play');
   if(isPlaying) {
     pauseSong();
@@ -123,14 +132,18 @@ playBtn.addEventListener('click', function () {
   }
 })
 
-// Add event listener to previous button
+// Add event listener to previous button to skip to previous song
 prevBtn.addEventListener('click', function() {
   prevSong();
 })
 
-// Add event listener to next button
+// Add event listener to next button to skip to next song
 nextBtn.addEventListener('click', function() {
   nextSong();
 });
 
+// Add event listener to the audio element to update progress bar
 audioElement.addEventListener('timeupdate', updateProgress);
+
+// Add event listener to make progress bar clickable
+progressContainer.addEventListener('click', setProgress);
