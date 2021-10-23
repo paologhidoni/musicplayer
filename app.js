@@ -1,16 +1,16 @@
 // Variables
-const musicContainer = document.querySelector('.music-container');
-const playBtn = document.querySelector('#play-btn');
-const prevBtn = document.querySelector('#previous-btn');
-const nextBtn = document.querySelector('#next-btn');
-const audioElement = document.querySelector('#audio');
-const trackCountdown = document.querySelector('.track__countdown'); 
-const artist = document.querySelector('#artist');
-const title = document.querySelector('#title');
-const cover = document.querySelector('#cover');
-const songURL = document.querySelector('.soundcloudLogo');
-const progress = document.querySelector('.progress');
-const progressContainer = document.querySelector('.progress-container');
+const player = document.querySelector('.player');
+const playBtn = document.querySelector('.player__buttons--play');
+const prevBtn = document.querySelector('.player__buttons--previous');
+const nextBtn = document.querySelector('.player__buttons--next');
+const audioElement = document.querySelector('.player__audioSrc');
+const timer = document.querySelector('.player__timer'); 
+const artist = document.querySelector('.player__artist');
+const title = document.querySelector('.player__title');
+const cover = document.querySelector('.player__cover--foreground');
+const songURL = document.querySelector('.soundcloud-logo');
+const playerBarForeground = document.querySelector('.player__bar--foreground');
+const playerBarBackground = document.querySelector('.player__bar--background');
 
 // playlist
 const playlist = {
@@ -52,7 +52,7 @@ loadSong(playlist, currentSong);
 
 // Function to play song
 function playSong() {
-  musicContainer.classList.add('play');
+  player.classList.add('play');
   playBtn.firstElementChild.src = 'assets/img/pause.png';
 
   audioElement.play();
@@ -60,7 +60,7 @@ function playSong() {
 
 // Function to pause the song
 function pauseSong() {
-  musicContainer.classList.remove('play');
+  player.classList.remove('play');
   playBtn.firstElementChild.src = 'assets/img/play.png';
 
   audioElement.pause();
@@ -96,7 +96,7 @@ function updateProgress(e) {
   const {duration, currentTime} = e.srcElement; // Store in variables total length of 
                                                 // track in seconds and time elapsed in seconds.  
   const progressPercent = (currentTime / duration) * 100; // Find percentage of progress in the track.
-  progress.style.width = `${progressPercent}%`; // Apply percentage as width style to progress bar.
+  playerBarForeground.style.width = `${progressPercent}%`; // Apply percentage as width style to progress bar.
 
 
   const minutes = Math.floor(audioElement.currentTime / 60); // Find elapsed minutes.
@@ -104,7 +104,7 @@ function updateProgress(e) {
 
   const seconds = Math.floor(audioElement.currentTime - minutes * 60); // Find elapsed seconds.
   const displaySeconds = seconds < 10 ? '0' + seconds : seconds; // Pad to 2 digits.
-  trackCountdown.innerText = `${displayMinutes}:${displaySeconds}`; // display minutes and seconds.
+  timer.innerText = `${displayMinutes}:${displaySeconds}`; // display minutes and seconds.
 }
 
 // function to make the progress bar clickable.
@@ -124,7 +124,7 @@ function setProgress(e) {
 
 // Add event listener to play button to either play or pause the song
 playBtn.addEventListener('click', function () {
-  const isPlaying = musicContainer.classList.contains('play');
+  const isPlaying = player.classList.contains('play');
   if(isPlaying) {
     pauseSong();
   } else  {
@@ -146,7 +146,7 @@ nextBtn.addEventListener('click', function() {
 audioElement.addEventListener('timeupdate', updateProgress);
 
 // Add event listener to make progress bar clickable
-progressContainer.addEventListener('click', setProgress);
+playerBarBackground.addEventListener('click', setProgress);
 
 // Add event listener to audio element to skip to next song when previous is ended, by calling nextSong()
   audioElement.addEventListener('ended', nextSong);
