@@ -147,3 +147,6 @@ audioElement.addEventListener('timeupdate', updateProgress);
 
 // Add event listener to make progress bar clickable
 progressContainer.addEventListener('click', setProgress);
+
+// Add event listener to audio element to skip to next song when previous is ended, by calling nextSong()
+  audioElement.addEventListener('ended', nextSong);
