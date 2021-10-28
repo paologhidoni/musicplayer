@@ -1,8 +1,9 @@
-// Variables
+// DOM Variables
 const player = document.querySelector('.player');
 const playBtn = document.querySelector('.player__buttons--play');
 const prevBtn = document.querySelector('.player__buttons--previous');
 const nextBtn = document.querySelector('.player__buttons--next');
+const shuffleBtn = document.querySelector('.player__buttons--shuffle');
 const audioElement = document.querySelector('.player__audioSrc');
 const timer = document.querySelector('.player__timer'); 
 const artist = document.querySelector('.player__artist');
@@ -27,11 +28,40 @@ const playlist = {
     source: 'ever.mp3',
     cover: 'ever.jpg',
     songURL: 'https://soundcloud.com/sounds-like-paolo/ever-team-sleep-cover'
+  },
+  2: {
+    songName: 'She\'s a Pet\'s Doctor',
+    artist : '7KM',
+    source: 'she\'s_a_pet\'s_doctor.mp3',
+    cover: '7KM.jpeg',
+    songURL: 'https://soundcloud.com/7km-1/03-shes-a-pets-doctor'
+  },
+  3: {
+    songName: '11 Shades of Gray',
+    artist : '7KM',
+    source: '11_shades_of_gray.mp3',
+    cover: '7KM.jpeg',
+    songURL: 'https://soundcloud.com/7km-1/01-11-shades-of-gray'
+  },
+  4: {
+    songName: 'Him Or Me',
+    artist : '7KM',
+    source: 'him_or_me.mp3',
+    cover: '7KM.jpeg',
+    songURL: 'https://soundcloud.com/7km-1/04-him-or-me'
+  },
+  5: {
+    songName: 'My Best Friend',
+    artist : '7KM',
+    source: 'my_best_friend.mp3',
+    cover: '7KM.jpeg',
+    songURL: 'https://soundcloud.com/7km-1/05-my-best-friend'
   }
 }
 
-// Current Song
+// Audio player functionality Variables
 let currentSong = 1;
+const numSongsInPlaylist = Object.keys(playlist).length;
 
 
 
@@ -91,6 +121,21 @@ function nextSong() {
   playSong();
 }
 
+// Function to skip to random song - shuffle functionality
+function skipToRandom() {
+  // Generate random number between 0 and number of songs in the playlist
+  let randomNumber = Math.floor(Math.random() * numSongsInPlaylist); 
+
+  if(currentSong === randomNumber) { // Avoids repeating same song twice
+    skipToRandom();
+  } else {
+    currentSong = randomNumber; // currenSong is a new random song
+    loadSong(playlist, currentSong);
+    playSong();
+  }
+
+}
+
 // Function to display countdown timer and update the progress bar.
 function updateProgress(e) {
   const {duration, currentTime} = e.srcElement; // Store in variables total length of 
@@ -120,6 +165,13 @@ function setProgress(e) {
 
 
 
+// Set output loudness
+
+audioElement.volume = 1;
+
+
+
+
 // EVENT LISTENERS //
 
 // Add event listener to play button to either play or pause the song
@@ -133,14 +185,13 @@ playBtn.addEventListener('click', function () {
 })
 
 // Add event listener to previous button to skip to previous song
-prevBtn.addEventListener('click', function() {
-  prevSong();
-})
+prevBtn.addEventListener('click', prevSong);
 
 // Add event listener to next button to skip to next song
-nextBtn.addEventListener('click', function() {
-  nextSong();
-});
+nextBtn.addEventListener('click', nextSong);
+
+// Add event listener to the shuffle button to skip to a random song
+shuffleBtn.addEventListener('click', skipToRandom);
 
 // Add event listener to the audio element to update progress bar
 audioElement.addEventListener('timeupdate', updateProgress);
@@ -149,4 +200,5 @@ audioElement.addEventListener('timeupdate', updateProgress);
 playerBarBackground.addEventListener('click', setProgress);
 
 // Add event listener to audio element to skip to next song when previous is ended, by calling nextSong()
-  audioElement.addEventListener('ended', nextSong);
+audioElement.addEventListener('ended', nextSong);
+
