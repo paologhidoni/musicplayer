@@ -60,7 +60,7 @@ const playlist = {
 }
 
 // Audio player functionality Variables
-let currentSong = 1;
+let currentSong = 0;
 const numSongsInPlaylist = Object.keys(playlist).length;
 
 

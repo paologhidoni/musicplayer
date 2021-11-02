@@ -72,11 +72,12 @@ h1 {
 }
 
 .player__btn {
-  max-width: 4.8em;
+  min-width: 2em;
+  max-width: 3.5em;
   background-color: #fff;
   border: none;
   cursor: pointer;
-  padding: 1.3em;
+  padding: 1em;
   margin: 0 15px;
 }
 
@@ -112,7 +113,12 @@ h1 {
 
 .player__artist {
   font-size: 0.8rem;
+  font-weight: 400;
   margin-bottom: 0;
+}
+
+.player__title {
+  font-size: 1.2rem;
 }
 
 .player__timer {
@@ -141,7 +147,11 @@ h1 {
 
 /* MEDIA QUERIES */
 
-@media only screen and (min-width: 800px) {
+@media only screen and (min-width: 600px) {
+
+  :root {
+    font-size: 110%;
+  }
 
   main {
     justify-content: center;
@@ -153,7 +163,7 @@ h1 {
   }
 
   .player {
-    padding: 3rem 10rem;
+    padding: 5% 12%;
   }
 
   .player__cover--background  {
