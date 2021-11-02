@@ -147,6 +147,18 @@ h1 {
 
 /* MEDIA QUERIES */
 
+
+@media only screen and (min-width: 380px) {
+
+  .player__buttons {
+    flex-direction: row;
+  }
+
+}
+
+
+
+
 @media only screen and (min-width: 600px) {
 
   :root {
@@ -177,10 +189,6 @@ h1 {
 
   .player__info {
     padding: 1rem 1rem 1rem 5rem;
-  }
-
-  .player__buttons {
-    flex-direction: row;
   }
 
 }
