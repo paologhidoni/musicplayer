@@ -1,9 +1,9 @@
-
 /* Variables */
-:root {
 
-  --color-maximum-blue: hsla(194, 57%, 57%, 1);
-  --color-purple-dark: #574D68;
+html {
+
+  --color-body-background: hsla(194, 57%, 57%, 1);
+  --color-progress-bar: #574D68;
 
 }
 
@@ -15,7 +15,8 @@
 
 body {
   font-family: 'Roboto', sans-serif;
-  background-color: var(--color-maximum-blue);
+  font-display: swap;
+  background-color: var(--color-body-background);
 }
 
 main {
@@ -29,8 +30,10 @@ main {
 
 h1 {
   font-size: 1.2rem;
-  margin-bottom: 14rem;
+  margin-bottom: 70px;
   color: #fff;
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+  transition: margin-bottom 0.4s ease-in;
 }
 
 .player {
@@ -62,6 +65,7 @@ h1 {
   max-width: 3.5em;
   border-radius: 5px;
   object-fit: cover;
+  height: auto;
 }
 
 .player__buttons {
@@ -83,6 +87,7 @@ h1 {
 
 .player__buttons--img {
   max-width: 100%;
+  height: auto;
 }
 
 .player__info {
@@ -136,7 +141,7 @@ h1 {
 }
 
 .player__bar--foreground {
-  background-color: var(--color-purple-dark);
+  background-color: var(--color-progress-bar);
   border-radius: 5px;
   height: 100%;
   width: 50%;
@@ -171,7 +176,6 @@ h1 {
 
   h1 {
     font-size: 1.8rem;
-    margin-bottom: 14rem;
   }
 
   .player {
@@ -206,6 +210,7 @@ h1 {
 .width-md {
   max-width: 40rem;
 }
+
 
 
 /* ANIMATIONS */
