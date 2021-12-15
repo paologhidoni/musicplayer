@@ -32,9 +32,9 @@ const playlist = {
     songURL: "https://soundcloud.com/sounds-like-paolo/ever-team-sleep-cover"
   },
   2: {
-    songName: "She\"s a Pet\"s Doctor",
+    songName: "She\'s a Pet\'s Doctor",
     artist : "7KM",
-    source: "she\"s_a_pet\"s_doctor.mp3",
+    source: "she\'s_a_pet\'s_doctor.mp3",
     cover: "7KM.jpeg",
     songURL: "https://soundcloud.com/7km-1/03-shes-a-pets-doctor"
   },
