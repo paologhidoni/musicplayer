@@ -1,3 +1,8 @@
+/* Quicksand font */
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&display=swap');
+
+
 /* Variables */
 
 html {
@@ -14,8 +19,7 @@ html {
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
-  font-display: swap;
+  font-family: 'Quicksand', sans-serif;
   background-color: var(--color-body-background);
 }
 
@@ -36,6 +40,7 @@ h1 {
   transition: margin-bottom 0.4s ease-in;
 }
 
+/* Music player container */
 .player {
   position: relative;
   display: flex;
@@ -48,6 +53,7 @@ h1 {
   z-index: 10;
 }
   
+/* Song cover img container */
 .player__cover--background {
   display: block;
   position: absolute;
@@ -57,10 +63,12 @@ h1 {
   animation-play-state: paused;
 }
 
+/* styles for song cover img container when song is playing */
 .player.play .player__cover--background {
   animation-play-state: running;
 }
 
+/* Song cover img */
 .player__cover--foreground {
   max-width: 3.5em;
   border-radius: 5px;
@@ -68,6 +76,7 @@ h1 {
   height: auto;
 }
 
+/* player controls container */
 .player__buttons {
   display: flex;
   flex-direction: column;
@@ -75,6 +84,7 @@ h1 {
   z-index: 1;
 }
 
+/* generic button style */
 .player__btn {
   min-width: 2em;
   max-width: 3.5em;
@@ -83,13 +93,16 @@ h1 {
   cursor: pointer;
   padding: 1em;
   margin: 0 15px;
+  transition: transform 0.2s;
 }
 
+/* buttons image */
 .player__buttons--img {
   max-width: 100%;
   height: auto;
 }
 
+/* song info display */
 .player__info {
   position: absolute;
   top: 0;
@@ -106,6 +119,7 @@ h1 {
   z-index: 0;
 }
 
+/* styles for song info display when song is playing */
 .player.play .player__info {
   opacity: 1;
   transform: translate(-50%, -98%);
@@ -116,21 +130,25 @@ h1 {
   margin-top: 0.5rem;
 }
 
+/* artist name */
 .player__artist {
   font-size: 0.8rem;
   font-weight: 400;
   margin-bottom: 0;
 }
 
+/* song title */
 .player__title {
   font-size: 1.2rem;
 }
 
+/* time elapsed / total */
 .player__timer {
   font-size: 1em;
   font-weight: 400;
 }
 
+/* progress bar background */
 .player__bar--background {
   background: #fff;
   border-radius: 5px;
@@ -140,6 +158,7 @@ h1 {
   width: 100%;
 }
 
+/* progress bar foreground, active part */
 .player__bar--foreground {
   background-color: var(--color-progress-bar);
   border-radius: 5px;
@@ -166,7 +185,7 @@ h1 {
 
 @media only screen and (min-width: 600px) {
 
-  :root {
+  html {
     font-size: 90%;
   }
 
