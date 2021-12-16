@@ -16,55 +16,100 @@ const playerBarForeground = document.querySelector(".player__bar--foreground");
 const playerBarBackground = document.querySelector(".player__bar--background");
 
 // playlist
-const playlist = {
-  0: {
+// const playlist = {
+//   "0": {
+//     songName: "Ceremony",
+//     artist : "New Order",
+//     source: "ceremony.mp3",
+//     cover: "ceremony.jpg",
+//     songURL: "https://soundcloud.com/sounds-like-paolo/ceremony-new-order-cover"
+//   },
+//   "1": {
+//     songName: "Ever",
+//     artist : "Team Sleep",
+//     source: "ever.mp3",
+//     cover: "ever.jpg",
+//     songURL: "https://soundcloud.com/sounds-like-paolo/ever-team-sleep-cover"
+//   },
+//   "2": {
+//     songName: "She\'s a Pet\'s Doctor",
+//     artist : "7KM",
+//     source: "she\'s_a_pet\'s_doctor.mp3",
+//     cover: "7KM.jpeg",
+//     songURL: "https://soundcloud.com/7km-1/03-shes-a-pets-doctor"
+//   },
+//   "3": {
+//     songName: "11 Shades of Gray",
+//     artist : "7KM",
+//     source: "11_shades_of_gray.mp3",
+//     cover: "7KM.jpeg",
+//     songURL: "https://soundcloud.com/7km-1/01-11-shades-of-gray"
+//   },
+//   "4": {
+//     songName: "Him Or Me",
+//     artist : "7KM",
+//     source: "him_or_me.mp3",
+//     cover: "7KM.jpeg",
+//     songURL: "https://soundcloud.com/7km-1/04-him-or-me"
+//   },
+//   "5": {
+//     songName: "My Best Friend",
+//     artist : "7KM",
+//     source: "my_best_friend.mp3",
+//     cover: "7KM.jpeg",
+//     songURL: "https://soundcloud.com/7km-1/05-my-best-friend"
+//   }
+// }
+
+const playlist = [
+  {
     songName: "Ceremony",
     artist : "New Order",
     source: "ceremony.mp3",
     cover: "ceremony.jpg",
     songURL: "https://soundcloud.com/sounds-like-paolo/ceremony-new-order-cover"
   },
-  1: {
+  {
     songName: "Ever",
     artist : "Team Sleep",
     source: "ever.mp3",
     cover: "ever.jpg",
     songURL: "https://soundcloud.com/sounds-like-paolo/ever-team-sleep-cover"
   },
-  2: {
+  {
     songName: "She\'s a Pet\'s Doctor",
     artist : "7KM",
     source: "she\'s_a_pet\'s_doctor.mp3",
     cover: "7KM.jpeg",
     songURL: "https://soundcloud.com/7km-1/03-shes-a-pets-doctor"
   },
-  3: {
+  {
     songName: "11 Shades of Gray",
     artist : "7KM",
     source: "11_shades_of_gray.mp3",
     cover: "7KM.jpeg",
     songURL: "https://soundcloud.com/7km-1/01-11-shades-of-gray"
   },
-  4: {
+  {
     songName: "Him Or Me",
     artist : "7KM",
     source: "him_or_me.mp3",
     cover: "7KM.jpeg",
     songURL: "https://soundcloud.com/7km-1/04-him-or-me"
   },
-  5: {
+  {
     songName: "My Best Friend",
     artist : "7KM",
     source: "my_best_friend.mp3",
     cover: "7KM.jpeg",
     songURL: "https://soundcloud.com/7km-1/05-my-best-friend"
   }
-}
+]
+
 
 // Audio player functionality Variables
 let currentSong = 0;
-const numSongsInPlaylist = Object.keys(playlist).length;
-
+const playlistLength = playlist.length;
 
 
 // FUNCTIONS //
@@ -108,9 +153,8 @@ function pauseSong() {
 function prevSong() {
   if(currentSong > 0) {
     currentSong -= 1;
-    console.log(currentSong);
   } else {
-    currentSong = Object.keys(playlist).length - 1;
+    currentSong = playlistLength - 1;
   }
 
   loadSong(playlist, currentSong);
@@ -120,7 +164,7 @@ function prevSong() {
 
 // Function to skip to the next song
 function nextSong() {
-  if(currentSong < Object.keys(playlist).length - 1) {
+  if(currentSong < playlistLength - 1) {
     currentSong += 1;
   } else {
     currentSong = 0;
@@ -134,7 +178,7 @@ function nextSong() {
 // Function to skip to random song - shuffle functionality
 function skipToRandom() {
   // Generate random number between 0 and number of songs in the playlist
-  let randomNumber = Math.floor(Math.random() * numSongsInPlaylist); 
+  let randomNumber = Math.floor(Math.random() * playlistLength); 
 
   if(currentSong === randomNumber) { // Avoids repeating same song twice
     skipToRandom();

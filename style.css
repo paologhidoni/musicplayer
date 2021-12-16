@@ -30,13 +30,15 @@ main {
   justify-content: center;
   height: 100vh;
   padding: 2rem 1rem 1rem 1rem;
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+
+
 }
 
 h1 {
   font-size: 1.2rem;
   margin-bottom: 70px;
   color: #fff;
-  text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
   transition: margin-bottom 0.4s ease-in;
 }
 
@@ -93,11 +95,10 @@ h1 {
   cursor: pointer;
   padding: 1em;
   margin: 0 15px;
-  transition: transform 0.2s;
 }
 
 /* buttons image */
-.player__buttons--img {
+.player__buttons-img {
   max-width: 100%;
   height: auto;
 }
@@ -133,6 +134,8 @@ h1 {
 /* artist name */
 .player__artist {
   font-size: 0.8rem;
+  font-size: 1rem;
+
   font-weight: 400;
   margin-bottom: 0;
 }
@@ -140,11 +143,15 @@ h1 {
 /* song title */
 .player__title {
   font-size: 1.2rem;
+  font-size: 1.4rem;
+
 }
 
 /* time elapsed / total */
 .player__timer {
   font-size: 1em;
+  font-size: 1.2rem;
+
   font-weight: 400;
 }
 
